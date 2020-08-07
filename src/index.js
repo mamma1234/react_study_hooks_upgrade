@@ -3,12 +3,14 @@ import ReactDOM from "react-dom";
 import "./styles.css";
 import Hook1 from "./hook1.js";
 import Hook2 from "./hook2.js";
+import Hook3 from "./hook3.js";
 
 const App = () => {
   return (
     <div className="App">
       <Hook1 />
       <Hook2 />
+      <Hook3 />
     </div>
   );
 };
