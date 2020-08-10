@@ -1,7 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
-import "./styles.css";
-
-const useNotification = (title, options) => {
+export const useNotification = (title, options) => {
   // console.log("call useNotification");
   if (!("Notification" in window)) {
     console.log("is");
@@ -24,15 +21,3 @@ const useNotification = (title, options) => {
 
   return fireNotif;
 };
-
-export default function Hook7() {
-  const triggerNotif = useNotification("Can I steal your kimchi ?", {
-    body: "i love kimchi"
-  });
-
-  return (
-    <div className="App">
-      <button onClick={triggerNotif}>hello</button>
-    </div>
-  );
-}
