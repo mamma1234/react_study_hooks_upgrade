@@ -6,7 +6,8 @@ import Hook2 from "./hook2.js";
 import Hook3 from "./hook3.js";
 import Hook4 from "./hook4.js";
 import Hook5 from "./hook5.js";
-
+import Hook6 from "./hook6.js";
+import Hook7 from "./hook7.js";
 const App = () => {
   return (
     <div className="App">
@@ -15,6 +16,8 @@ const App = () => {
       <Hook3 />
       <Hook4 />
       <Hook5 />
+      <Hook6 />
+      <Hook7 />
     </div>
   );
 };

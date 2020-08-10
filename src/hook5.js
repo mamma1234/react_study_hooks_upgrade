@@ -17,14 +17,35 @@ const useFadeIn = (duration = 1, delay = 0) => {
   }, []);
   return { ref: element, style: { opacity: 0 } };
 };
+
+const useNetwork = (onChange) => {
+  const [status, setStatus] = useState(navigator.onLine);
+  const handleChange = () => {
+    if (typeof onChange === "function") {
+      onChange(navigator.onLine);
+    }
+    setStatus(navigator.onLine);
+  };
+  useEffect(() => {
+    window.addEventListener("online", handleChange);
+    window.addEventListener("offline", handleChange);
+    () => {
+      window.removeEventListener("online", handleChange);
+      window.removeEventListener("offline", handleChange);
+    };
+  }, []);
+  return status;
+};
+
 export default function Hook5() {
   // const [item, setItem] = useState(5);
-  const fadeInH1 = useFadeIn(1, 2);
-  const fadeInP = useFadeIn(5, 10);
+  const handleNetworkChange = (online) => {
+    console.log(online ? "web online" : "we offine");
+  };
+  const onLine = useNetwork(handleNetworkChange);
   return (
     <div className="App">
-      <h1 {...fadeInH1}>Hello Ref Hook</h1>
-      <p {...fadeInP}>lorem ipsum adsaf</p>
+      <h1>Hello Ref Hook {onLine ? "onLine" : "offline"} </h1>
     </div>
   );
 }
